@@ -1,0 +1,38 @@
+<div class="contaier">
+        <div class="d-flex justify-content-center">
+            <div style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-1 col-sm-6 ">
+                <Label id="title">Meeting Room Request</Label>
+                <form class="text-center rounded" >
+                    <div class="form-row">
+                        <div class="form-group">
+                            <div class="card bg-dark" style="width: 40rem; height: 300px;">
+                                <br>
+                                <label id="list"><b>Rooms:</b></label>
+                                <button type="button"  class="btn btn-outline-light btn-block"
+                                    (click)="markComplete()"> Complete</button>
+                                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                    <table class="table table-hover table-dark ">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Room Name:</th>
+                                                <th scope="col">Room Capacity:</th>
+                                                <th scope="col">Floor #:</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let room of meetingRooms" (click)="getRoom(room)">
+                                                <td>{{room.meetingRoomName}}</td>
+                                                <td>{{room.capicity}}</td>
+                                                <td>{{room.floor}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+    </div>

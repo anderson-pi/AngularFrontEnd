@@ -1,0 +1,53 @@
+label{
+    font-size: 57px;
+    text-align: center;
+    display: block;
+    color:burlywood;
+    font-family: fantasy;
+    line-height: 60px;
+    text-decoration: underline;
+}
+small{
+    font-size: 30px;
+    color:white;
+    text-align: center;
+    font-family: cursive;
+}
+input{
+    text-align: center;
+    font-size: 200%;
+    font-family: cursive;
+    border-bottom: 4px solid black;
+    background-color: burlywood;
+}
+
+button{
+    font-family: cursive;
+    background: #3E4551;
+    color: burlywood;
+}
+.error{
+    font-size: 30px;
+    color: red;
+    
+    
+}
+.container{
+    /* The image used */
+    background-image: url("src/assets/loginBackground.jpg");
+    /* Full height */
+    height: 100%;
+    width: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+          
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

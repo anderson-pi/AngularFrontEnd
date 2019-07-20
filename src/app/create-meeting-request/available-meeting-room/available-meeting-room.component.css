@@ -1,0 +1,89 @@
+.label{
+    font-size: 100px;
+    display: block;
+    word-wrap: normal;
+}
+button{
+  position: relative;
+  left: 20px;
+  bottom: 28px;
+  width: 100px;
+}
+
+  #title{
+    position: relative;
+    
+    white-space: nowrap;
+      font-family: fantasy;
+      font-size:  60px;
+      line-height: 200%;
+      color: black;
+      font-weight: bold;
+    justify-content: center;
+    display: flex;
+    bottom: 25px;
+  }
+  .contaier{
+    /* The image used */
+    background-image: url(src/assets/meetingRequestBackground.jpg);
+    /* Full height */
+    height: 100%;
+    width: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: cursive;
+    color: white;
+  }
+
+  form{
+    position: relative;
+    line-height: 170%;
+    text-align: center;
+    
+    
+    
+  }
+  .my-custom-scrollbar {
+    position: relative;
+    height: 200px;
+    overflow: auto;
+    }
+    .table-wrapper-scroll-y {
+    display: block;
+    
+    }
+    tr{
+      position: relative;
+      
+      
+        color: burlywood;
+    }
+    table {
+  border-collapse: separate;
+  border-spacing: 50px 0;
+}
+
+td {
+  padding: 10px 0;
+}
+    tbody{
+      color: burlywood;
+    }
+    #list{
+      position: relative;
+      font-size: 30px;
+      line-height: 10%;
+      color: burlywood;
+      top: 20px;
+    }
+
+   

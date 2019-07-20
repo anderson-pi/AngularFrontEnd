@@ -1,0 +1,55 @@
+.text-center{
+    background: #3E4551;
+}
+.label{
+    font-size: 30px;
+    word-wrap: normal;
+}
+
+button{
+      background-color: black;
+      color: burlywood;
+      font-size: 25px;
+}
+
+  .title{
+    white-space: nowrap;
+      font-family: fantasy;
+      font-size:  60px;
+      line-height: 110%;
+      color: black;
+      font-weight: bold;
+    justify-content: center;
+    display: flex;
+  }
+  .container{
+    /* The image used */
+    background-image: url(src/assets/trainingRequestBackground.jpg);
+    /* Full height */
+    height: 100%;
+    width: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: cursive;
+    color: white;
+  }
+
+form{
+    bottom: 30px;
+    line-height: 100%;
+    color: burlywood;
+  }
+  .form-control{
+    background-color: burlywood;
+  }
+
+

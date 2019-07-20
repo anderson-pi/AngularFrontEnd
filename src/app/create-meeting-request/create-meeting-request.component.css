@@ -1,0 +1,126 @@
+.text-center{
+  
+    background: #3E4551;
+
+}
+.label{
+  position: relative;
+    font-size: 30px;
+    word-wrap: normal;
+    line-height: 0%;
+}
+
+#dateButton{
+  position: relative;
+      background-color: black;
+      color: burlywood;
+      line-height: -100%;
+    
+}
+
+  .title{
+    position: relative;
+    white-space: nowrap;
+      font-family: fantasy;
+      font-size:  60px;
+      line-height: 100%;
+      color: black;
+      font-weight: bold;
+    justify-content: center;
+    display: flex;
+  }
+  .container{
+    /* The image used */
+    background-image: url(src/assets/meetingRequestBackground.jpg);
+    /* Full height */
+    height: 100%;
+    width: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: cursive;
+    color: white;
+  }
+
+form{
+    bottom: 30px;
+    line-height: 100%;
+    color: burlywood;
+    height: 27rem;
+  }
+  .form-control{
+    background-color: burlywood;
+  }
+  ngb-timepicker{
+    position: relative;
+    
+  }
+  textarea{
+    position: relative;
+    bottom: 2rem;
+    
+  }
+#descLabel{
+  position: relative;
+  bottom: 2.8rem;
+  right: -8px;
+
+}
+.final{
+  left: 175px;
+  font-size: 25px;
+  bottom: 50px;
+  position: relative;
+      background-color: black;
+      color: burlywood;
+}
+#start{
+    bottom: -3px;
+    left: 25px;
+    font-size: 15px;
+
+}
+#end{
+  position: relative;
+  left:14rem;
+ top: 2px;
+  font-size: 15px;
+}
+#startDate{
+  position: relative;
+ text-align: center;
+ top:5px;
+
+}
+
+#descWarning{
+  position: relative;
+  bottom: 22px;
+  line-height: 0%;
+}
+#descWarning1{
+  position: relative;
+  bottom: 22px;
+ 
+  line-height: 0%;
+}
+p{
+  position: relative;
+  line-height: 0%;
+}
+#dateWarning{
+  position: relative;
+  top: 8px;
+  line-height: 0%;
+}
+.input-group-append{
+  line-height: 0%;
+}

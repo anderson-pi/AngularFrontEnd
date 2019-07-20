@@ -1,0 +1,37 @@
+.jumbotron{
+    /* The image used */
+    background-image: url("src/assets/homeBackground.jpg");
+    /* Full height */
+    height: 100%;
+    width: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+          
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+  }
+  h1,h3,p{
+    text-decoration: underline;
+  }
+  div{
+      text-align: center;
+    color:black;
+      font-family: fantasy;
+  }
+  h3{
+      font-size: 200%;
+  }
+
+  app-tasks{
+
+    font-size: 20px;
+    font-family: cursive;
+}

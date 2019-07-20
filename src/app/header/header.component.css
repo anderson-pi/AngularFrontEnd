@@ -1,0 +1,17 @@
+.nav-item{
+    vertical-align: middle;
+    margin: 10px; 
+    font-family: cursive;
+    text-align: center; 
+    display: inline-block;
+ 
+  }
+  .navbar{
+    height: 88px;
+  }
+  .dropup:hover .dropup-content {
+    display: block;
+  }
+  button{
+    color: burlywood;
+  }

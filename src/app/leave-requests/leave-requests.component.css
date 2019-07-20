@@ -1,0 +1,33 @@
+.container{
+    background-image: url(src/assets/leaveBackground.jpg);
+   
+     /* Full height */
+    height: 100%;
+    width: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: cursive;
+}
+table{
+    color: burlywood;
+    font-size: 1.5rem;
+    background: #3E4551;
+}
+.my-custom-scrollbar {
+    position: relative;
+    height: 500px;
+    top: 2rem;
+    overflow: auto;
+    }
+.table-wrapper-scroll-y {
+display: block;    
+ }

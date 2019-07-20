@@ -1,0 +1,26 @@
+<div class="container ">
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Day</th>
+                        <th scope="col">Start Time</th>
+                        <th scope="col">End Time</th>
+                        <th scope="col">Reason</th>
+                        <th scope="col">Approved</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let request of meetingRequest">
+                        <th scope="row">{{request.requestId}}</th>
+                        <td>{{request.day}}</td>
+                        <td>{{request.startTime}}</td>
+                        <td>{{request.endTime}}</td>
+                        <td>{{request.meetingDesc}}</td>
+                        <td>{{request.status | questionableBoolean}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>

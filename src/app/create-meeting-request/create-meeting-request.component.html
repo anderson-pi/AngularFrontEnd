@@ -1,0 +1,62 @@
+<div class="container" *ngIf="!filled; else alreadyFilled">
+    <div class="d-flex justify-content-center">
+        <div style=" margin-top:45px" class="mainbox col-md-6 col-md-offset-2 col-sm-6 col-sm-offset-2">
+            <div class="">
+                <Label class="title">Meeting Room Request</Label>
+                <form class="text-center border rounded border-dark p-4" (ngSubmit)="onSelect()"
+                    [formGroup]="meetingForm">
+                    <div class="form2">
+                        <div class="form-row">
+                            <div class="form-group col-md-12">
+                                <label class="label" for="start">Date:</label>
+                                <div class="input-group " id="startDate">
+                                    <input class="form-control" [readonly]="true" placeholder="yyyy-mm-dd"
+                                        name="startDate" formControlName="startDate" ngbDatepicker #d="ngbDatepicker">
+                                    <div class="input-group-append">
+                                        <button id="dateButton" class="btn btn-outline-secondary btn-lg calendar"
+                                            (click)="d.toggle()" type="button"></button>
+                                    </div>
+                                </div>
+                                <div class="form-control-feedback"  id="dateWarning" [ngStyle]="{'color':'red'}"
+                                    *ngIf="startDate.errors && (startDate.dirty || startDate.touched)">
+                                    <p *ngIf="startDate.hasError('required')"id="dateWarning">Date is required!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="form-group row" id="time">
+                            <ngb-timepicker id="start" formControlName="startTime" readonlyInputs="true"
+                                [minuteStep]="minuteStep">
+                            </ngb-timepicker>
+                            <ngb-timepicker id="end" formControlName="endTime" readonlyInputs="true"
+                                [minuteStep]="minuteStep">
+                            </ngb-timepicker>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-12">
+                            <label class="label" id="descLabel">Description</label>
+                            <div class="form-group shadow-textarea">
+                                <textarea class="form-control z-depth-1" id="exampleFormControlTextarea6" rows="5"
+                                    placeholder="Write something here..." formControlName="reason"></textarea>
+                                <div id="descWarning" class="form-control-feedback" [ngStyle]="{'color':'red'}"
+                                    *ngIf="reason.errors && (reason.dirty || reason.touched)">
+                                    <p  id="descWarning" *ngIf="reason.hasError('required')">Description is required!</p>
+                                    <p  id="descWarning1" *ngIf="reason.hasError('minlength')">Description must be longer than 10
+                                        characters</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <button class="btn" class="btn final" [disabled]="(!meetingForm.valid)">Send Request</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #alreadyFilled>
+    <app-available-meeting-room [meetingForm]="meetingForm"> </app-available-meeting-room>
+</ng-template>

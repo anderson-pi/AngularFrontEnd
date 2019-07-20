@@ -1,0 +1,56 @@
+fieldset{
+    display: flex;
+    left: 35px;
+}
+
+.text-center{
+    background: #3E4551;
+}
+.label{
+    font-size: 30px;
+    text-align: center;
+    display: block;
+}
+.container{
+    /* The image used */
+    background-image: url(src/assets/leaveRequestBackground.jpg);
+    /* Full height */
+    height: 100%;
+    width: 100%;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: cursive;
+    color: white;
+  }
+  button{
+      background-color: black;
+      color: burlywood;
+      
+      font-size: 25px;
+      
+  }
+  .title{
+      font-family: fantasy;
+      text-align: center;
+      font-size:  60px;
+      line-height: 115%;
+      color: black;
+      font-weight: bold;
+      
+  }
+  .form-group,form-control{
+      color: burlywood;
+
+  }
+  .form-control{
+      background-color: burlywood;
+  }

@@ -1,0 +1,42 @@
+<div class="contaier">
+    <div class="d-flex justify-content-center">
+        <div style=" margin-top:50px" class="mainbox col-md-10 col-md-offset-3 col-sm-8 col-sm-offset-6">
+            <Label class="title">Training Room Request</Label>
+            <form class="text-center rounded p-4" >
+                <div class="form-row">
+                    <div class="form-group">
+                        <div class="card text-white bg-dark" style="width: 63rem; height: 300px;">
+                            <br>
+                            <label id="list"><b>Rooms:</b></label>
+                            <button type="button" class="btn btn-outline-light btn-block"
+                                (click)="markComplete()"> Complete</button>
+                            <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                                <table class="table table-hover table-dark ">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Room Name:</th>
+                                            <th scope="col">Room Capacity:</th>
+                                            <th scope="col">Floor #:</th>
+                                            <th scope="col">Projector</th>
+                                            <th scope="col">Whiteboard</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr *ngFor="let room of trainingRooms" (click)="getRoom(room)">
+                                            <td>{{room.roomName}}</td>
+                                            <td>{{room.roomCapacity}}</td>
+                                            <td>{{room.floorNb}}</td>
+                                            <td>{{room.isProjector | questionableBoolean}}</td>
+                                            <td>{{room.isWhiteboard| questionableBoolean}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

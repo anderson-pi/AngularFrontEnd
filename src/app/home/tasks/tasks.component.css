@@ -1,0 +1,77 @@
+.container.my-custom-scrollbar {
+    height: 350px;
+    overflow: auto;
+    }
+.my-custom-scrollbar {
+height: 260px;
+overflow: auto;
+}
+.table-wrapper-scroll-y {
+display: block;
+
+}
+thead{
+    white-space:nowrap;
+    color: burlywood;
+}
+label{
+    font-size: 25px;
+    color: burlywood;
+}
+.card-body,tbody{
+    color: burlywood;
+}
+#dec{
+    position: relative;
+    bottom: 20px;
+   
+    
+    line-height: 1%;
+}
+#id{
+    position: relative;
+    left: 50px;
+    bottom: 5px;
+}
+p{
+    
+    overflow-wrap: break-word;
+    position: relative;
+    font-size: 20px;
+    bottom: 20px;
+}
+.card-title{
+    
+    
+    
+    font-size: 30px;
+    
+}
+#details{
+    font-size: 30px;
+    line-height: 20px;
+    top: 20px;
+    position: relative;
+}
+#descText{
+    top: .2px;
+    font-size: 15px;
+  
+}
+#complete{
+    position: relative;
+    right: 47px;
+    bottom: 5px;
+
+}
+#taskName{
+    position: relative;
+    bottom: 15px;
+    line-height: 1px;
+}
+button{
+    position: relative;
+    left: 80;
+    bottom: 28px;
+    width: 100px;
+}
