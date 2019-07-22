@@ -1,0 +1,58 @@
+#page{
+    background-color:grey;
+   
+     /* Full height */
+    height: 200%;
+    width: 100%;
+    background-size: cover;
+    position:absolute;
+    top: 0; 
+    left: 0; 
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: cursive;
+}
+table{
+    color: burlywood;
+    font-size: 1.5rem;
+    background: #3E4551;
+}
+.my-custom-scrollbar {
+    position: relative;
+
+    overflow: auto;
+    }
+.table-wrapper-scroll-y {
+display: block;    
+ }
+ #leaveTable{
+    height: 300px;
+    width: 77rem;
+    
+ }
+ #trainingTable{
+    height: 300px;
+    width:77rem;
+    
+ }
+ #meetingTable{
+    height: 300px;
+    width: 77rem;
+    
+ }
+
+ .row{
+    margin-left:5%; 
+    margin-right:5%;
+ }
+ label{
+    font-size: 20px;
+    word-wrap: normal;
+ }
+ 

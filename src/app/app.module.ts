@@ -23,7 +23,6 @@ import { AvailableTrainingroomsComponent } from './create-training-request/avail
 import { HttpClientService } from './service/http-client.service';
 import { QuestionableBooleanPipe } from './models';
 import { AvailableMeetingRoomComponent } from './create-meeting-request/available-meeting-room/available-meeting-room.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -43,7 +42,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ProfileComponent,
     AvailableTrainingroomsComponent,
     QuestionableBooleanPipe,
-    AvailableMeetingRoomComponent
+    AvailableMeetingRoomComponent,
     
   ],
   imports: [
@@ -52,10 +51,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule, 
-    NgbModule,
-    BrowserAnimationsModule,
+    NgbModule
     
-  
   ],
   providers: [HttpClientService,AuthenticateService,{
     provide: HTTP_INTERCEPTORS,

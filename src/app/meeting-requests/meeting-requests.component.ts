@@ -15,28 +15,14 @@ export class MeetingRequestsComponent implements OnInit {
     this.http.getMeetingRequest(parseInt(sessionStorage.getItem("id"))).subscribe(
       data =>{
         data.forEach(element => {
-          element.day = this.getDate(element.startTime);
-          element.startTime = this.getStartTime(element.startTime);
-          element.endTime = this.getEndTime(element.endTime);
+          element.day = this.http.getDate(element.startTime);
+          element.startTime = this.http.getStartTime(element.startTime);
+          element.endTime = this.http.getEndTime(element.endTime);
   
         });
         this.meetingRequest = data;
     })
   }
-
-  getDate(timeStamp:string){
-    let dateTime =timeStamp.split('T');
-    return dateTime[0];
-  }
-  getStartTime(timeStamp:string){
-    let dateTime =timeStamp.split('T');
-    return dateTime[1].substr(0,5);
-  }
-  getEndTime(timeStamp:string){
-    let dateTime =timeStamp.split('T');
-    return dateTime[1].substr(0,5);
-  }
-  
   
 
 }

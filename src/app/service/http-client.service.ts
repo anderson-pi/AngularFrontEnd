@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Employee, Tasks, TrainingRoom, traingRoomRequest, MeetingRoom, LeaveRequest, MeetingRequest, TrainingRequest } from '../models';
+import { Employee, Tasks, TrainingRoom, traingRoomRequest, MeetingRoom, LeaveRequest, MeetingRequest, TrainingRequest, Department } from '../models';
 import { Observable } from 'rxjs';
 import { FormGroup } from '@angular/forms';
 import { stringify } from 'querystring';
 
 const baseUrl: string = "http://localhost:8082/emp";
+const adminUrl: string = "http://localhost:8082/admin";
 
 @Injectable({
   providedIn: 'root'
@@ -108,6 +109,75 @@ export class HttpClientService {
   public getUserRole(user:string):Observable<JSON>{
     return this.httpClient.get<JSON>(`${baseUrl}/findUsersRole/${user}`)
   }
+  public getAllLeaveRequest():Observable<LeaveRequest>{
+    return this.httpClient.get<LeaveRequest>(`${adminUrl}/viewLeaveRequest`)
+  }
+  public getAllTrainingRequest():Observable<TrainingRequest>{
+    return this.httpClient.get<TrainingRequest>(`${adminUrl}/viewTrainingRequest`)
+  }
+  public getAllMeetingRequest():Observable<Array<MeetingRequest>>{
+    return this.httpClient.get<Array<MeetingRequest>>(`${adminUrl}/viewMeetingRequest`)
+  }
+  public getAllEmps():Observable<Employee>{
+    return this.httpClient.get<Employee>(`${adminUrl}/emps`)
+  }
+  public getAllDepts():Observable<Department>{
+    return this.httpClient.get<Department>(`${adminUrl}/depts`)
+  }
+  public getEmpByLastName(name:string):Observable<Employee>{
+    return this.httpClient.get<Employee>(`${adminUrl}/emps/${name}`)
+  }
+  public createTask(startDate,endDate,reason,name,empNb,admin):Observable<JSON>{
+    let sDay = startDate["day"]
+    let sMon = startDate["month"]
+    let sYear = startDate["year"]
+    let eDay = endDate["day"]
+    let eMon = endDate["month"]
+    let eYear = endDate["year"]
+    sDay = this.appendZero(sDay)
+    eDay =this.appendZero(eDay)
+    sMon = this.appendZero(sMon)
+    eMon = this.appendZero(eMon)
+    let sDate = `${sYear}-${sMon}-${sDay}`
+    let eDate = `${eYear}-${eMon}-${eDay}`
+    console.log(eDate,sDate)
+    return this.httpClient.post<JSON>(`${adminUrl}/task`,{"taskName":name,"taskDesc":reason,
+    "startDate":sDate,"endDate":eDate,"assignedTo":empNb,"assignedBy":admin})
+  }
+  public creatEmployee(firstName,lastName,contactNo,dept):Observable<JSON>{
+    return this.httpClient.post<JSON>(`${adminUrl}/emp/create/${dept}`,{"firstName":firstName, "lastName":lastName,"contactNo":contactNo})
+  }
+  public creatDepartment(dept:string):Observable<JSON>{
+    console.log(dept)
+    return this.httpClient.post<JSON>(`${adminUrl}/dept/create`,{"deptName":dept})
+  }
+  public createTrainingRoom(roomName,roomCapacity,floorNb,isProjector,isWhiteboard):Observable<JSON>{
+    return this.httpClient.post<JSON>(`${adminUrl}/createTrainingRoom`,{"roomName":roomName,
+    "roomCapacity":roomCapacity,"floorNb":floorNb,"isProjector":isProjector,"isWhiteboard":isWhiteboard})
+  }
+  public createMeetingRoom(meetingRoomName,capicity,floor):Observable<JSON>{
+    return this.httpClient.post<JSON>(`${adminUrl}/createMeetingRoom`,{"meetingRoomName":meetingRoomName,
+  "capicity":capicity, "floor":floor })
+  }
+  public approveMeeting(id):Observable<JSON>{
+    return this.httpClient.put<JSON>(`${adminUrl}/acceptMeetingRoom/${id}`,null)
+  }
+  public denyMeeting(id):Observable<JSON>{
+    return this.httpClient.delete<JSON>(`${adminUrl}/denyMeetingRoom/${id}`)
+  }
+  public approveTraining(id):Observable<JSON>{
+    return this.httpClient.put<JSON>(`${adminUrl}/acceptTrainingRoom/${id}`,null)
+  }
+  public denyTraining(id):Observable<JSON>{
+    return this.httpClient.delete<JSON>(`${adminUrl}/denyTrainingRoom/${id}`)
+  }
+  public approveLeave(id):Observable<JSON>{
+    return this.httpClient.put<JSON>(`${adminUrl}/acceptLeave/${id}`,null)
+  }
+  public denyLeave(id):Observable<JSON>{
+    return this.httpClient.delete<JSON>(`${adminUrl}/denyLeave/${id}`)
+  }
+
 
 
   appendZero(text: number): string {
@@ -117,6 +187,18 @@ export class HttpClientService {
     else {
       return `${text}`;
     }
+  }
+  getDate(timeStamp:string){
+    let dateTime =timeStamp.split('T');
+    return dateTime[0];
+  }
+  getStartTime(timeStamp:string){
+    let dateTime =timeStamp.split('T');
+    return dateTime[1].substr(0,5);
+  }
+  getEndTime(timeStamp:string){
+    let dateTime =timeStamp.split('T');
+    return dateTime[1].substr(0,5);
   }
 
 }

@@ -7,7 +7,10 @@ export class Employee {
     lastName: string;
     userLogin: any;
 }
-
+export class Department {
+    deptId:number;
+    deptName:string;
+}
 export class traingRoomRequest {
     trainingRoomId: number;
     startDate: any;
@@ -53,7 +56,7 @@ export class LeaveRequest {
     startDate: string;
     endDate: string;
     reason: string;
-    status: boolean;
+    statue: boolean;
 }
 export class MeetingRequest {
     requestId: number;
@@ -65,12 +68,12 @@ export class MeetingRequest {
     status: boolean;
 }
 export class TrainingRequest {
-    requestId:number;
-    trainingRoomId:number;
-    startDate:string;
-    endDate:string;
-    roomDesc:string;
-    status:boolean;
+    requestId: number;
+    trainingRoomId: number;
+    startDate: string;
+    endDate: string;
+    roomDesc: string;
+    status: boolean;
 }
 @Pipe({ name: 'questionableBoolean' })
 export class QuestionableBooleanPipe implements PipeTransform {

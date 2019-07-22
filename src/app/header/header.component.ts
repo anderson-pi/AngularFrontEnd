@@ -12,18 +12,20 @@ import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  @Input() admin=false;
+
   constructor(private loginAuth:AuthenticateService,private router:Router) { }
 
   ngOnInit() {
-    if(sessionStorage.getItem("role") == "admin"){
-      this.admin = true;
-    }
   }
 
 logOut(){
   this.loginAuth.logOut();
   this.router.navigate(["/"])
+}
+checkCreds(){
+  if(sessionStorage.getItem("role") == "admin"){
+    this.router.navigate(["/admin"])
+  }
 }
 
 }
