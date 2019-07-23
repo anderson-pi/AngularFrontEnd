@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { NumberValueAccessor } from '@angular/forms';
 import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import {Location} from '@angular/common'
 
 @Component({
   selector: 'app-profile',
@@ -44,7 +45,7 @@ export class ProfileComponent implements OnInit {
   mCapacity;
   mFloor;
 
-  constructor(private http: HttpClientService, private router:Router,private modalService: NgbModal) { }
+  constructor(private location:Location, private http: HttpClientService, private router:Router,private modalService: NgbModal) { }
 
   ngOnInit() {
     this.http.getAllLeaveRequest().subscribe(
@@ -87,6 +88,7 @@ export class ProfileComponent implements OnInit {
             this.searchRequest = data;
           }
         )
+        this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
         break;
       }
       case "allEmp": {
@@ -95,6 +97,7 @@ export class ProfileComponent implements OnInit {
             this.searchRequest = data;
           }
         )
+        this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
         break;
       }
       case "empLast": {
@@ -103,10 +106,23 @@ export class ProfileComponent implements OnInit {
             this.searchRequest = data;
           }
         )
+        this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
         break;
       }
+      case "deleteEmp": {
+        this.http.deleteEmp(this.searchText).subscribe(
+          data => {this.searchText = "Employee Deleted"} 
+        )
+        break;
+      }
+      case "deleteDept": {
+        this.http.deleteDept(this.searchText).subscribe(
+          data => {this.searchText = "Department Deleted"} 
+        )
+        break;
+      }
+      
     }
-    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' })
   }
 
   openTask(task) {
@@ -169,27 +185,40 @@ export class ProfileComponent implements OnInit {
 
   approveMeeting(request){
     this.http.approveMeeting(request).subscribe();
-    this.router.navigate(["/admin"])
+    this.router.navigateByUrl("/home",{skipLocationChange: true}).then(()=>{
+      this.router.navigate([decodeURI(this.location.path())])
+    })
+    
   }
   denyMeeting(request){
     this.http.denyMeeting(request).subscribe();
-    this.router.navigate(["/admin"])
+    this.router.navigateByUrl("/home",{skipLocationChange: true}).then(()=>{
+      this.router.navigate([decodeURI(this.location.path())])
+    })
   }
   approveTraining(request){
     this.http.approveTraining(request).subscribe();
-    this.router.navigate(["/admin"])
+    this.router.navigateByUrl("/home",{skipLocationChange: true}).then(()=>{
+      this.router.navigate([decodeURI(this.location.path())])
+    })
   }
   denyTraining(request){
     this.http.denyTraining(request).subscribe();
-    this.router.navigate(["/admin"])
+    this.router.navigateByUrl("/home",{skipLocationChange: true}).then(()=>{
+      this.router.navigate([decodeURI(this.location.path())])
+    })
   }
   approveLeave(request){
     this.http.approveLeave(request).subscribe();
-    this.router.navigate(["/admin"])
+    this.router.navigateByUrl("/home",{skipLocationChange: true}).then(()=>{
+      this.router.navigate([decodeURI(this.location.path())])
+    })
   }
   denyLeave(request){
     this.http.denyLeave(request).subscribe();
-    this.router.navigate(["/admin"])
+    this.router.navigateByUrl("/home",{skipLocationChange: true}).then(()=>{
+      this.router.navigate([decodeURI(this.location.path())])
+    })
   }
 
 

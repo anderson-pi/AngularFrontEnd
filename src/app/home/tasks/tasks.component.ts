@@ -43,5 +43,4 @@ hintColor;
     )
   }
 
-  //sortTasks(task)
 }

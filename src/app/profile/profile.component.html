@@ -1,7 +1,7 @@
 <div id="page">
     <br>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col">
             <div class="form-check form-check-inline">
                 <input type="radio" class="form-check-input" id="allDept" value="allDept" (click)="setInputTrue()"
                     name="typeSearch" [(ngModel)]="typeSearch">
@@ -17,22 +17,33 @@
                     name="typeSearch" [(ngModel)]="typeSearch">
                 <label class="form-check-label">Employee Lastname</label>
             </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="deleteEmp" value="deleteEmp" (click)="setInputFalse()"
+                    name="typeSearch" [(ngModel)]="typeSearch">
+                <label class="form-check-label">Delete Employee</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input type="radio" class="form-check-input" id="deleteDept" value="deleteDept" (click)="setInputFalse()"
+                    name="typeSearch" [(ngModel)]="typeSearch">
+                <label class="form-check-label">Delete Department</label>
+            </div>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <button class="btn btn-outline-light btn-block" (click)="open(content)" ntype="button">Search
+                    <button class="btn btn-outline-light btn-block" (click)="open(content)" ntype="button">Submit
                     </button>
                 </div>
                 <input type="text" name="searchText" [(ngModel)]="searchText" [readonly]=searchName class="form-control"
                     id="basic-url" aria-describedby="basic-addon3">
             </div>
         </div>
-
+    </div>
+    <div class="row">
         <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
             <label ngbButtonLabel class="btn btn-secondary btn-outline-light">
                 <input ngbButton type="radio" (click)="openTask(task)" [value]="1">Create Task
             </label>
             <label ngbButtonLabel class="btn btn-secondary btn-outline-light">
-                <input ngbButton type="radio" (click)="openNewEmp(emp)" value="2"> Crate Employee
+                <input ngbButton type="radio" (click)="openNewEmp(emp)" value="2"> Create Employee
             </label>
             <label ngbButtonLabel class="btn btn-secondary btn-outline-light">
                 <input ngbButton type="radio" (click)="openNewDept(dpt)" [value]="3"> Create Department
@@ -77,7 +88,7 @@
                                     ngbDropdownToggle>Choose</button>
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                                     <button (click)="approveLeave(request.leaveId)" ngbDropdownItem>Approve</button>
-                                    <button (click)="denyLeave(request.leaveId)"ngbDropdownItem>Deny</button>
+                                    <button (click)="denyLeave(request.leaveId)" ngbDropdownItem>Deny</button>
                                 </div>
                             </div>
                         </th>
@@ -119,7 +130,8 @@
                                 <button class="btn btn-outline-light btn-block" id="dropdownBasic1"
                                     ngbDropdownToggle>Choose</button>
                                 <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                    <button (click)="approveTraining(request.requestId)" ngbDropdownItem>Approve</button>
+                                    <button (click)="approveTraining(request.requestId)"
+                                        ngbDropdownItem>Approve</button>
                                     <button (click)="denyTraining(request.requestId)" ngbDropdownItem>Deny</button>
                                 </div>
                             </div>
@@ -278,13 +290,13 @@
                     <div class="col">
                         <label class="label">Firstname</label>
                         <div class="form-group shadow-textarea">
-                            <input type=text placeholder="firstName" name="fname" [(ngModel)]="fname">
+                            <input type=text placeholder="Firstname" name="fname" [(ngModel)]="fname">
                         </div>
                     </div>
                     <div class="col">
                         <label class="label">Lastname</label>
                         <div class="form-group shadow-textarea">
-                            <input type="text" placeholder="Employee Number" name="lname" [(ngModel)]="lname">
+                            <input type="text" placeholder="Lastname" name="lname" [(ngModel)]="lname">
                         </div>
                     </div>
                 </div>
@@ -292,14 +304,14 @@
                     <div class="col">
                         <label class="label">Contact</label>
                         <div class="form-group shadow-textarea">
-                            <input type="text" placeholder="Employee Number" name="contact" [(ngModel)]="contact">
+                            <input type="text" placeholder="Phone number" name="contact" [(ngModel)]="contact">
                         </div>
                     </div>
 
                     <div class="col">
                         <label class="label">Department</label>
                         <div class="form-group shadow-textarea">
-                            <input type="text" placeholder="Employee Number" name="dept" [(ngModel)]="dept">
+                            <input type="text" placeholder="Department" name="dept" [(ngModel)]="dept">
                         </div>
                     </div>
                 </div>
@@ -319,9 +331,9 @@
         </div>
         <div class="modal-body">
             <div class="row">
-                <label class="label">Department Name</label>
+                <label class="label">Department Name </label>
                 <div class="form-group shadow-textarea">
-                    <input type=text placeholder="firstName" name="deptName" [(ngModel)]="deptName">
+                    <input type=text placeholder="Name" name="deptName" [(ngModel)]="deptName">
                 </div>
             </div>
             <div class="modal-footer">
@@ -401,11 +413,11 @@
                 </div>
             </div>
             <div class="row">
-                    <label class="label">Floor #</label>
-                    <div class="form-group shadow-textarea">
-                        <input type=number placeholder="#" name="mFloor" [(ngModel)]="mFloor">
-                    </div>
+                <label class="label">Floor #</label>
+                <div class="form-group shadow-textarea">
+                    <input type=number placeholder="#" name="mFloor" [(ngModel)]="mFloor">
                 </div>
+            </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
             </div>

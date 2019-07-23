@@ -16,7 +16,6 @@ export class AuthenticateService {
   constructor(private httpClient:HttpClient) { }
 
   authenticate(username:string, password:string):Observable<any>{
-    sessionStorage.setItem("username",username)
     return this.httpClient.post<any>("http://localhost:8082/auth",JSON.stringify({userName: username, passWord: password}),httpOptions);
 
   }

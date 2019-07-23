@@ -1,6 +1,7 @@
 fieldset{
     display: flex;
     left: 35px;
+    font-size: 20px;
 }
 
 .text-center{
@@ -13,7 +14,7 @@ fieldset{
 }
 .container{
     /* The image used */
-    background-image: url(src/assets/leaveRequestBackground.jpg);
+    background-image: url("src/assets/homeBackground.jpg");
     /* Full height */
     height: 100%;
     width: 100%;
@@ -28,7 +29,7 @@ fieldset{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
     color: white;
   }
   button{
@@ -39,12 +40,16 @@ fieldset{
       
   }
   .title{
-      font-family: fantasy;
+      position: relative;
+    font-family: 'Times New Roman', Times, serif;
       text-align: center;
       font-size:  60px;
-      line-height: 115%;
+      line-height: 100%;
       color: black;
       font-weight: bold;
+      display: block;
+      
+    
       
   }
   .form-group,form-control{

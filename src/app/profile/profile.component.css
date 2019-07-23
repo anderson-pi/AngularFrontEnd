@@ -2,7 +2,7 @@
     background-color:grey;
    
      /* Full height */
-    height: 200%;
+    height: 250%;
     width: 100%;
     background-size: cover;
     position:absolute;
@@ -16,7 +16,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
 }
 table{
     color: burlywood;
@@ -51,8 +51,13 @@ display: block;
     margin-left:5%; 
     margin-right:5%;
  }
+ .btn-group{
+    position: relative;
+    margin-left:1.5%; 
+ }
  label{
-    font-size: 20px;
+    font-size: 1.7rem;
     word-wrap: normal;
  }
+ 
  

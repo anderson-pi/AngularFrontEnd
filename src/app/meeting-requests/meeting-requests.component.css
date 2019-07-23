@@ -1,5 +1,5 @@
 .container{
-    background-image: url(src/assets/meetingRequest.jpg);
+    background-image: url("src/assets/homeBackground.jpg");
    
      /* Full height */
     height: 100%;
@@ -15,7 +15,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif
 }
 table{
     color: burlywood;

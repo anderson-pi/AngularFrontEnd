@@ -30,7 +30,7 @@ label{
 }
 #id{
     position: relative;
-    left: 50px;
+    left: 40px;
     bottom: 5px;
 }
 p{
@@ -41,11 +41,7 @@ p{
     bottom: 20px;
 }
 .card-title{
-    
-    
-    
     font-size: 30px;
-    
 }
 #details{
     font-size: 30px;
@@ -55,12 +51,12 @@ p{
 }
 #descText{
     top: .2px;
-    font-size: 15px;
+    font-size: 25px;
   
 }
 #complete{
     position: relative;
-    right: 47px;
+    right: 42px;
     bottom: 5px;
 
 }
@@ -73,5 +69,9 @@ button{
     position: relative;
     left: 80;
     bottom: 28px;
-    width: 100px;
+    width: 120px;
+    font-size: 20px;
+}
+td{
+    white-space: nowrap;
 }

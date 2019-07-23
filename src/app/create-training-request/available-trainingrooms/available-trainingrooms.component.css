@@ -13,7 +13,7 @@ button{
 
   .title{
     white-space: nowrap;
-      font-family: fantasy;
+      font-family: 'Times New Roman', Times, serif;
       font-size:  60px;
       line-height: 200%;
       color: black;
@@ -25,7 +25,7 @@ button{
   }
   .contaier{
     /* The image used */
-    background-image: url(src/assets/trainingRequestBackground.jpg);
+    background-image: url("src/assets/homeBackground.jpg");
     /* Full height */
     height: 100%;
     width: 100%;
@@ -40,7 +40,7 @@ button{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
     color: white;
   }
 
@@ -70,7 +70,7 @@ button{
     }
     #list{
       position: relative;
-      font-size: 30px;
+      font-size: 2rem;
       line-height: 10%;
       color: burlywood;
       top: 20px;
@@ -83,5 +83,12 @@ button{
       column-width: 170px;
 
     }
+    th{
+      font-size: 2rem;
+    }
+    td{
+      font-size: 1.7rem;
+    }
+   
    
     

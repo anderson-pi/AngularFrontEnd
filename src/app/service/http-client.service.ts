@@ -177,6 +177,16 @@ export class HttpClientService {
   public denyLeave(id):Observable<JSON>{
     return this.httpClient.delete<JSON>(`${adminUrl}/denyLeave/${id}`)
   }
+  public deleteEmp(id):Observable<JSON>{
+    return this.httpClient.delete<JSON>(`${adminUrl}/emp/${id}`)
+  }
+  public deleteDept(id):Observable<JSON>{
+    return this.httpClient.delete<JSON>(`${adminUrl}/dept/${id}`)
+  }
+  public register(username,password,id):Observable<JSON>{
+    return this.httpClient.post<JSON>(`http://localhost:8082/register/${id}`,
+    {"userName":username,"passWord":password})
+  }
 
 
 

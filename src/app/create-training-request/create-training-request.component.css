@@ -14,7 +14,7 @@ button{
 
   .title{
     white-space: nowrap;
-      font-family: fantasy;
+    font-family: 'Times New Roman', Times, serif;
       font-size:  60px;
       line-height: 110%;
       color: black;
@@ -24,7 +24,7 @@ button{
   }
   .container{
     /* The image used */
-    background-image: url(src/assets/trainingRequestBackground.jpg);
+    background-image: url("src/assets/homeBackground.jpg");
     /* Full height */
     height: 100%;
     width: 100%;
@@ -39,7 +39,7 @@ button{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    font-family: cursive;
+    font-family: 'Times New Roman', Times, serif;
     color: white;
   }
 

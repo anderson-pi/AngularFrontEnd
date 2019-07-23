@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthenticateService } from '../service/authenticate.service';
 import {FormGroup,Validators,FormBuilder} from '@angular/forms'
 import { HttpClientService } from '../service/http-client.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +16,14 @@ export class LoginComponent implements OnInit{
     username: ["", Validators.required],
     password: ["", Validators.required],
   })
-  
+  newID;
+  newUser;
+  newPword;
+  isError = false;
   
   error:string=""
-  constructor(private http:HttpClientService ,private router: Router, private loginAuth: AuthenticateService,private fb:FormBuilder) { }
+
+  constructor(private modalService: NgbModal,private http:HttpClientService ,private router: Router, private loginAuth: AuthenticateService,private fb:FormBuilder) { }
 
   ngOnInit() {
   }
@@ -39,13 +44,28 @@ export class LoginComponent implements OnInit{
         );
       },
         error => {
+          this.isError=true;
           this.error = "Sorry, Invalid Credentials!";
         form.reset;
       }
     )
     
 
-
+    
+  }
+  register(reg){
+    this.modalService.open(reg, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
+      this.http.register(this.newUser,this.newPword,this.newID).subscribe( data =>{
+        this.isError=false;
+        this.error = "Registration Complete!";
+      },
+      error => {
+        this.isError=true;
+        this.error = "Sorry, Contact Admin!";
+      
+    });
+    }, (reason) => {});
+    
   }
 
 }

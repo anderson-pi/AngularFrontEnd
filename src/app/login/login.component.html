@@ -2,19 +2,51 @@
     <div class="d-flex justify-content-center">
         <div style=" margin-top:100px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
             <form class="align-middle" (ngSubmit)="login(form)" [formGroup]="form">
-                <label for="form">E-Suite Login</label><br><br><br>
+                <label id="title" for="form">E-Suite Login</label><br><br><br>
                 <div class="form-group">
-                    <input type="text" class="form-control" formControlName="username" required
+                    <input id="user" type="text" class="form-control" formControlName="username" required
                         placeholder="Username" />
                 </div>
                 <div class="form-group">
-                    <input s type="password" class="form-control" formControlName="password" required id="password"
-                        placeholder="Password" />
+                    <input id="pword" type="password" class="form-control" formControlName="password" required
+                        id="password" placeholder="Password" />
                 </div>
                 <button type="submit" class="btn btn-dark btn-lg btn-block">Submit</button><br>
-                <br>
             </form>
-            <label class="error">{{error}}</label>
+            <button (click)="register(reg)" class="btn btn-dark btn-lg btn-block">Register</button><br>
+            <label [ngStyle]="{'color':isError ? 'red' : 'green' }" class="error">{{error}}</label>
         </div>
     </div>
 </div>
+<ng-template #reg let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Register</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <label class="label">Employee ID </label>
+            <div class="form-group shadow-textarea">
+                <input type=number name="newID" [(ngModel)]="newID">
+            </div>
+        </div>
+        <div class="row">
+            <label class="label">Username </label>
+            <div class="form-group shadow-textarea">
+                <input type=text name="newUser" [(ngModel)]="newUser">
+            </div>
+        </div>
+        <div class="row">
+            <label class="label">Password </label>
+            <div class="form-group shadow-textarea">
+                <input type=text name="newPword" [(ngModel)]="newPword">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
+        </div>
+
+    </div>
+</ng-template>
