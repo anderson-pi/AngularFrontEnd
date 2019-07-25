@@ -39,8 +39,8 @@ export class TrainingRoom {
     roomName: string;
     roomCapacity: number;
     floorNb: number;
-    isProjector: boolean;
-    isWhiteboard: boolean;
+    projector: boolean;
+    whiteboard: boolean;
     reservedDates: Set<NgbDateStruct>;
 }
 export class MeetingRoom {

@@ -56,10 +56,13 @@ export class LoginComponent implements OnInit{
   register(reg){
     this.modalService.open(reg, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.http.register(this.newUser,this.newPword,this.newID).subscribe( data =>{
+        console.log("here")
         this.isError=false;
         this.error = "Registration Complete!";
       },
       error => {
+
+        console.log(error)
         this.isError=true;
         this.error = "Sorry, Contact Admin!";
       

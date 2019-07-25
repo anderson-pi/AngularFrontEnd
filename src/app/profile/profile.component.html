@@ -257,7 +257,14 @@
                 <div class="col">
                     <label class="label">Assigned To</label>
                     <div class="form-group shadow-textarea">
-                        <input type="number" placeholder="Employee Number" name="empNb" [(ngModel)]="empNb">
+                            <div ngbDropdown class="d-inline-block">
+                                    <button class="btn btn-secondary btn-sm btn-block" id="dropdownBasic1"
+                                        ngbDropdownToggle>{{empName}}</button>
+                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                        <a *ngFor="let request of empList" (click)="selectEmpForTask(request)"ngbDropdownItem>{{request.firstName}} {{request.lastName}}</a>
+                                        
+                                    </div>
+                                </div>
                     </div>
                 </div>
             </div>

@@ -23,7 +23,7 @@ import { AvailableTrainingroomsComponent } from './create-training-request/avail
 import { HttpClientService } from './service/http-client.service';
 import { QuestionableBooleanPipe } from './models';
 import { AvailableMeetingRoomComponent } from './create-meeting-request/available-meeting-room/available-meeting-room.component';
-
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
   declarations: [
@@ -51,7 +51,8 @@ import { AvailableMeetingRoomComponent } from './create-meeting-request/availabl
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule, 
-    NgbModule
+    NgbModule,
+    NgxSpinnerModule
     
   ],
   providers: [HttpClientService,AuthenticateService,{

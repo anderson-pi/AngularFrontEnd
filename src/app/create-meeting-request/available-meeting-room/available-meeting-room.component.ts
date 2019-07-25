@@ -3,6 +3,7 @@ import { MeetingRequestsComponent } from 'src/app/meeting-requests/meeting-reque
 import { MeetingRoom } from 'src/app/models';
 import { HttpClientService } from 'src/app/service/http-client.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: 'app-available-meeting-room',
@@ -11,15 +12,16 @@ import { Router } from '@angular/router';
 })
 export class AvailableMeetingRoomComponent implements OnInit {
   @Input() meetingForm;
-  meetingRooms:Set<MeetingRoom>
+  meetingRooms:MeetingRoom
   choosenRoom:MeetingRoom;
 
-  constructor(private http:HttpClientService, private router:Router) { }
+  constructor(private spinner: NgxSpinnerService,private http:HttpClientService, private router:Router) { }
 
   ngOnInit() {
     this.http.getAllMeetingingRooms().subscribe(
       data => {
         this.meetingRooms = data;
+        
     })
   }
 
@@ -28,8 +30,10 @@ export class AvailableMeetingRoomComponent implements OnInit {
   }
 
   markComplete(){
+    this.spinner.show()
     this.http.sendMeetingRooms(parseInt(sessionStorage.getItem("id")), this.meetingForm, this.choosenRoom.roomId).subscribe(
       data => {
+        this.spinner.hide()
         this.router.navigate(['/home'])
       }
     )

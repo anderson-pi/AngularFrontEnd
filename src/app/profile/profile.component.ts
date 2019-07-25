@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
   allLeaveRequests: LeaveRequest;
   allTrainingRequests: TrainingRequest;
   allMeetingRequests: MeetingRequest[];
+  empList;
   searchName: boolean = true;
   searchText: string = ""
   typeSearch;
@@ -26,7 +27,8 @@ export class ProfileComponent implements OnInit {
   endDate;
   reason;
   name;
-  empNb;
+  empName;
+  empId;
   //new employee
   fname;
   lname;
@@ -126,15 +128,21 @@ export class ProfileComponent implements OnInit {
   }
 
   openTask(task) {
+    this.http.getAllEmps().subscribe(
+      data => {
+        this.empList = data;
+      }
+    )
     this.modalService.open(task, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.http.createTask(this.startDate, this.endDate, this.reason,
-        this.name, this.empNb, parseInt(sessionStorage.getItem("id"))).subscribe();
+        this.name, this.empId, parseInt(sessionStorage.getItem("id"))).subscribe();
     }, (reason) => {});
     this.startDate=null
     this.endDate= null
     this.reason = null
     this.name = null
-    this.empNb=null
+    this.empId=null
+    this.empName=null
   }
   openNewEmp(emp) {
     this.modalService.open(emp, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
@@ -219,6 +227,13 @@ export class ProfileComponent implements OnInit {
     this.router.navigateByUrl("/home",{skipLocationChange: true}).then(()=>{
       this.router.navigate([decodeURI(this.location.path())])
     })
+  }
+
+  selectEmpForTask(request){
+    this.empName = request.firstName + " " + request.lastName;
+    this.empId = request.empId
+    console.log(this.empId)
+
   }
 
 

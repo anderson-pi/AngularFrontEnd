@@ -64,8 +64,8 @@ export class HttpClientService {
     return this.httpClient.post<JSON>(`${baseUrl}/leaveRequest/${id}`, {"leaveType": form.controls.type.value,
     "startDate": startDate, "endDate": endDate, "reason": form.controls.reason.value});
   }
-  public getAllMeetingingRooms(): Observable<Set<MeetingRoom>> {
-    return this.httpClient.get<Set<MeetingRoom>>("http://localhost:8082/admin/viewMeetings");
+  public getAllMeetingingRooms(): Observable<MeetingRoom> {
+    return this.httpClient.get<MeetingRoom>("http://localhost:8082/admin/viewMeetings");
   }
   
   public sendMeetingRooms(id: number, form: FormGroup, roomID: number): Observable<any> {
@@ -90,7 +90,7 @@ export class HttpClientService {
     eHr = this.appendZero(eHr);
     let startTime = `${sHr}:${sMin}:${sSec}`
     let endTime = `${eHr}:${eMin}:${eSec}`
-  
+    console.log(startTime,endTime)
     return this.httpClient.post<JSON>(`${baseUrl}/meetingRoom/${id}`, {
       "roomId": roomID, "day": startDate,
       "startTime": startTime, "endTime": endTime,"meetingDesc": form.controls.reason.value
@@ -153,7 +153,7 @@ export class HttpClientService {
   }
   public createTrainingRoom(roomName,roomCapacity,floorNb,isProjector,isWhiteboard):Observable<JSON>{
     return this.httpClient.post<JSON>(`${adminUrl}/createTrainingRoom`,{"roomName":roomName,
-    "roomCapacity":roomCapacity,"floorNb":floorNb,"isProjector":isProjector,"isWhiteboard":isWhiteboard})
+    "roomCapacity":roomCapacity,"floorNb":floorNb,"projector":isProjector,"whiteboard":isWhiteboard})
   }
   public createMeetingRoom(meetingRoomName,capicity,floor):Observable<JSON>{
     return this.httpClient.post<JSON>(`${adminUrl}/createMeetingRoom`,{"meetingRoomName":meetingRoomName,
@@ -187,7 +187,10 @@ export class HttpClientService {
     return this.httpClient.post<JSON>(`http://localhost:8082/register/${id}`,
     {"userName":username,"passWord":password})
   }
-
+ 
+  public getWeather():Observable<JSON>{
+    return this.httpClient.get<JSON>('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=5180199&units=imperial&APPID=0e73510e45d52824506e93446d8ac054')
+  }
 
 
   appendZero(text: number): string {
@@ -199,15 +202,15 @@ export class HttpClientService {
     }
   }
   getDate(timeStamp:string){
-    let dateTime =timeStamp.split('T');
+    let dateTime =timeStamp.split(' ');
     return dateTime[0];
   }
   getStartTime(timeStamp:string){
-    let dateTime =timeStamp.split('T');
+    let dateTime =timeStamp.split(' ');
     return dateTime[1].substr(0,5);
   }
   getEndTime(timeStamp:string){
-    let dateTime =timeStamp.split('T');
+    let dateTime =timeStamp.split(' ');
     return dateTime[1].substr(0,5);
   }
 
