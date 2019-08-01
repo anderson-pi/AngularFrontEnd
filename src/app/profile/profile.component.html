@@ -1,3 +1,4 @@
+<ngx-spinner></ngx-spinner>
 <div id="page">
     <br>
     <div class="row">
@@ -23,8 +24,8 @@
                 <label class="form-check-label">Delete Employee</label>
             </div>
             <div class="form-check form-check-inline">
-                <input type="radio" class="form-check-input" id="deleteDept" value="deleteDept" (click)="setInputFalse()"
-                    name="typeSearch" [(ngModel)]="typeSearch">
+                <input type="radio" class="form-check-input" id="deleteDept" value="deleteDept"
+                    (click)="setInputFalse()" name="typeSearch" [(ngModel)]="typeSearch">
                 <label class="form-check-label">Delete Department</label>
             </div>
             <div class="input-group">
@@ -40,19 +41,19 @@
     <div class="row">
         <div class="btn-group btn-group-toggle" ngbRadioGroup name="radioBasic" [(ngModel)]="model">
             <label ngbButtonLabel class="btn btn-secondary btn-outline-light">
-                <input ngbButton type="radio" (click)="openTask(task)" [value]="1">Create Task
+                <input ngbButton type="radio" (click)="openTask(task,error)" [value]="1">Create Task
             </label>
             <label ngbButtonLabel class="btn btn-secondary btn-outline-light">
-                <input ngbButton type="radio" (click)="openNewEmp(emp)" value="2"> Create Employee
+                <input ngbButton type="radio" (click)="openNewEmp(emp,error)" value="2"> Create Employee
             </label>
             <label ngbButtonLabel class="btn btn-secondary btn-outline-light">
-                <input ngbButton type="radio" (click)="openNewDept(dpt)" [value]="3"> Create Department
+                <input ngbButton type="radio" (click)="openNewDept(dpt,error)" [value]="3"> Create Department
             </label>
             <label ngbButtonLabel class="btn btn-secondary btn-outline-light">
-                <input ngbButton type="radio" (click)="openNewTraining(training)" [value]="4"> Create Training Room
+                <input ngbButton type="radio" (click)="openNewTraining(training,error)" [value]="4"> Create Training Room
             </label>
             <label ngbButtonLabel class="btn btn-secondary btn-outline-light">
-                <input ngbButton type="radio" (click)="openNewMeeting(meeting)" [value]="5"> Create Meeting Room
+                <input ngbButton type="radio" (click)="openNewMeeting(meeting,error)" [value]="5"> Create Meeting Room
             </label>
         </div>
 
@@ -257,14 +258,15 @@
                 <div class="col">
                     <label class="label">Assigned To</label>
                     <div class="form-group shadow-textarea">
-                            <div ngbDropdown class="d-inline-block">
-                                    <button class="btn btn-secondary btn-sm btn-block" id="dropdownBasic1"
-                                        ngbDropdownToggle>{{empName}}</button>
-                                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                                        <a *ngFor="let request of empList" (click)="selectEmpForTask(request)"ngbDropdownItem>{{request.firstName}} {{request.lastName}}</a>
-                                        
-                                    </div>
-                                </div>
+                        <div ngbDropdown class="d-inline-block">
+                            <button class="btn btn-secondary btn-sm btn-block" id="dropdownBasic1"
+                                ngbDropdownToggle>{{empName}}</button>
+                            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                                <a *ngFor="let request of empList" (click)="selectEmpForTask(request)"
+                                    ngbDropdownItem>{{request.firstName}} {{request.lastName}}</a>
+
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -429,6 +431,20 @@
                 <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Save</button>
             </div>
 
+        </div>
+    </ng-template>
+    <ng-template #error let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Error</h4>
+            <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <p>Please check to make sure all fields are filled
+                </p>
+            </div>
         </div>
     </ng-template>
 </div>

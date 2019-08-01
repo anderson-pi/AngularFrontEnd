@@ -188,11 +188,19 @@ export class HttpClientService {
     {"userName":username,"passWord":password})
   }
  
-  public getWeather():Observable<JSON>{
-    return this.httpClient.get<JSON>('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=5180199&units=imperial&APPID=0e73510e45d52824506e93446d8ac054')
+  public getWeather(zip):Observable<JSON>{
+    return this.httpClient.get<JSON>(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&APPID=0e73510e45d52824506e93446d8ac054`)
   }
-
-
+  public getWeatherByCity(city):Observable<JSON>{
+    return this.httpClient.get<JSON>(`https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&APPID=0e73510e45d52824506e93446d8ac054`)
+  }
+  getIpCliente(): Observable<{ip:string}> {
+    return this.httpClient.get<{ip:string}>('https://cors-anywhere.herokuapp.com/https://jsonip.com')
+  }
+  getLongLat(ip):Observable<JSON>{
+    return this.httpClient.get<JSON>(`https://cors-anywhere.herokuapp.com/https://ipapi.co/${ip}/json/ `)
+  }
+  
   appendZero(text: number): string {
     if (text < 10) {
       return `0${text}`

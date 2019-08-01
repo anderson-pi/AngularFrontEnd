@@ -3,6 +3,7 @@ import { traingRoomRequest, TrainingRoom } from 'src/app/models';
 import { FormGroup, FormBuilder,  } from '@angular/forms';
 import { HttpClientService } from 'src/app/service/http-client.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class AvailableTrainingroomsComponent implements OnInit {
   chosenRoom:TrainingRoom;
   trainingRequest:traingRoomRequest;
 
-  constructor(private fb: FormBuilder, private router: Router, private http: HttpClientService) { }
+  constructor(private spinner: NgxSpinnerService,private fb: FormBuilder, private router: Router, private http: HttpClientService) { }
 
   ngOnInit() {
     this.http.getAllTrainingRooms().subscribe(
@@ -31,11 +32,14 @@ export class AvailableTrainingroomsComponent implements OnInit {
   
   markComplete(){
     if(this.chosenRoom != null){
+      this.spinner.show();
       this.http.sendTrainingRooms(parseInt(sessionStorage.getItem("id")),this.trainingForm,this.chosenRoom.roomId).subscribe(
         data =>{
+          this.spinner.hide()
             this.router.navigate(['/home'])
         }
       )
+
     }
   }
   getRoom(room:TrainingRoom){

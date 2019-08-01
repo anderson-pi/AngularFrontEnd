@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClientService } from '../service/http-client.service';
 import { Tasks } from '../models';
 
+
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,11 +13,14 @@ export class HomeComponent implements OnInit {
   empName:string = "Hello"
   myTasks:Tasks[];
   id:number;
+  news;
   constructor(private http:HttpClientService) {  this.id = +sessionStorage.getItem("id") }
 
   ngOnInit() {
     this.empName = sessionStorage.getItem("name");
-    this.getTasks()     
+    this.getTasks()  
+
+    
   }
   ngOnChanges(){
   }
@@ -23,6 +28,11 @@ export class HomeComponent implements OnInit {
       this.http.getUsersTasks(this.id).subscribe(
       tasks => { this.myTasks =tasks})
 
+  }
+  
+
+  getRandomInt(max):number {
+    return Math.floor(Math.random() * Math.floor(max));
   }
 
 }

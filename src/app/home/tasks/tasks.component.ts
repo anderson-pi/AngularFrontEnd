@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Tasks } from 'src/app/models';
 import { HttpClientService } from 'src/app/service/http-client.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-tasks',
@@ -9,7 +10,7 @@ import { HttpClientService } from 'src/app/service/http-client.service';
 })
 export class TasksComponent implements OnInit {
 @Input('myTasks') tasks:Tasks[];
-  constructor(private http:HttpClientService) { }
+  constructor(private spinner:NgxSpinnerService,private http:HttpClientService) { }
 taskID:number;
 taskName:string ;
 taskCompleted:boolean;
@@ -31,16 +32,21 @@ hintColor;
 
   markComplete(task:Tasks){
     console.log(this.currentClick)
+    this.spinner.show();
     this.http.markTaskComplete(this.currentClick.taskId).subscribe(
       data => {
+        this.spinner.hide();
         this.currentClick.status =true;
         this.taskCompleted = true;
         this.hintColor = "#008000";
         this.taskName = "Competed";
         this.taskDesc = data["returnText"];
         
+      }, error =>{
+        this.spinner.hide();
       }
     )
+    
   }
-
+    
 }

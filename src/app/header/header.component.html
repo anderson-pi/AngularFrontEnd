@@ -1,14 +1,15 @@
+<ngx-spinner></ngx-spinner>
 <div class="container">
     <nav *ngIf="loginAuth.isUserLoggedIn()" class="navbar navbar-expand-sm bg-dark navbar-dark fixed-bottom">
         <div class="navbar-collapse">
             <ul class="navbar-nav ">
                 <li class="nav-item">
-                    <label id="temp">{{currentTemp}}°</label>
+                    <label id="temp">{{currentTemp}}°F</label>
                 </li>
             </ul>
         </div>
 
-        <div class="navbar-collapse">
+        <div id="options" class="navbar-collapse">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <div ngbDropdown placement="top-right" display="dynamic" class="d-inline-block">
@@ -67,6 +68,14 @@
                 </li>
 
             </ul>
+        </div>
+        <div>
+            <div class="row">
+                <button (click)="searchWeatherbyCity()" class="btn btn-outline-light" id="weatherTag">Search Cities Weather </button>
+            </div>
+            <div class="row">
+                <input id="weatherText" type="text" name="weatherCity" [(ngModel)]=weatherCity>
+            </div>
         </div>
     </nav>
 </div>

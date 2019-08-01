@@ -20,8 +20,16 @@
     position: relative;
     color: white;
     font-size: 3rem;
-    margin-right: -10rem;
-    margin-left: -2rem;
-  
+    left: 1.8rem;
+    margin-left: -3rem;
+  }
+  #weatherText{
+    position: relative;
+    right: .6rem;
+    size: 1rem;
+  }
+  #weatherTag{
+    position: relative;
+    right: .3rem;
   }
   

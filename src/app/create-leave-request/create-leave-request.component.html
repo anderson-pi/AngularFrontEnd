@@ -1,3 +1,4 @@
+<ngx-spinner></ngx-spinner>
 <div class="container">
     <div class="d-flex justify-content-center">
         <div style=" margin-top:70px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -81,7 +82,7 @@
                         </div>
 
                     </div>
-                    <button type="submit" class="btn ">Send Request</button>
+                    <button type="submit" class="btn" [disabled]="(!requestForm.valid)">Send Request</button>
                 </form>
             </div>
 

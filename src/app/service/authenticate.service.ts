@@ -27,8 +27,6 @@ export class AuthenticateService {
   logOut(){
     sessionStorage.removeItem("username");
     sessionStorage.removeItem("token");
-    console.log(sessionStorage.getItem("username"));
-    console.log(sessionStorage.getItem("token"));
   }
 
 }

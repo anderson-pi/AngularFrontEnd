@@ -5,7 +5,8 @@ import { LoginComponent } from '../login/login.component';
 import { RouteConfigLoadEnd, Router } from '@angular/router';
 import { getAttrsForDirectiveMatching } from '@angular/compiler/src/render3/view/util';
 import { HttpClientService } from '../service/http-client.service';
-
+import { Location } from '@angular/common'
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-header',
@@ -14,13 +15,29 @@ import { HttpClientService } from '../service/http-client.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private http: HttpClientService, private loginAuth: AuthenticateService, private router: Router) { }
+  constructor(private spinner:NgxSpinnerService,private location: Location, private http: HttpClientService, private loginAuth: AuthenticateService, private router: Router) { }
   currentTemp;
+  weatherCity = ""
   ngOnInit() {
-    this.http.getWeather().subscribe(data => {
-      this.currentTemp = data["main"]["temp"];
-      console.log(this.currentTemp)
+    this.http.getIpCliente().subscribe(data => {
+      let zip = data["ip"].split(',')
+      this.http.getLongLat(zip[0]).subscribe(postal => {
+        this.http.getWeather(postal["postal"]).subscribe(data => {
+        this.currentTemp = data["main"]["temp"];
+        })
+      })
     })
+  }
+
+  searchWeatherbyCity(){
+    this.spinner.show()
+    this.http.getWeatherByCity(this.weatherCity).subscribe(data=>{
+      this.currentTemp = data["main"]["temp"];
+    },
+    error=>{
+      this.weatherCity = "No location found"
+    })
+    this.spinner.hide()
   }
 
   logOut() {
@@ -30,8 +47,13 @@ export class HeaderComponent implements OnInit {
   checkCreds() {
     if (sessionStorage.getItem("role") == "admin") {
       this.router.navigate(["/admin"])
+    } else {
+      this.router.navigateByUrl("/admin", { skipLocationChange: true }).then(() => {
+        this.router.navigate([decodeURI(this.location.path())])
+      })
     }
   }
+
 
 
 }
